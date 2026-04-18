@@ -5,6 +5,9 @@ import google.generativeai as genai
 # Load environment variables (local only)
 load_dotenv()
 
+import os
+print("DEBUG IMAGE_ANALYZER KEY:", os.getenv("GOOGLE_API_KEY"))
+
 # Get API key
 api_key = os.getenv("GOOGLE_API_KEY")
 
