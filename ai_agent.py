@@ -9,11 +9,21 @@ from memory_store import save_user
 
 from dotenv import load_dotenv
 
+# Load env (works locally only)
 load_dotenv()
 
-os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
+# Get API key
+api_key = os.getenv("GOOGLE_API_KEY")
 
-llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
+# Fail fast (VERY IMPORTANT)
+if not api_key:
+    raise ValueError("❌ GOOGLE_API_KEY is missing. Check .env or Streamlit Secrets")
+
+# Initialize LLM with key explicitly
+llm = ChatGoogleGenerativeAI(
+    model="gemini-2.5-flash",
+    google_api_key=api_key
+)
 
 def run_agent(user_data, image_analysis):
 
