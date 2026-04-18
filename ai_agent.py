@@ -12,6 +12,9 @@ from dotenv import load_dotenv
 # Load env (works locally only)
 load_dotenv()
 
+import os
+print("DEBUG AI_AGENT KEY:", os.getenv("GOOGLE_API_KEY"))
+
 # Get API key
 api_key = os.getenv("GOOGLE_API_KEY")
 
